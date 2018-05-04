@@ -3,33 +3,47 @@ package Categories;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import enums.Status;
+
 import Project.Project;
+import User.User;
 
 public class Category {
 	
 	private ArrayList<Project> projects = new ArrayList<Project>();
-	
+
 	Scanner input = new Scanner(System.in);
 	
-	public void lookProjects(){
-		int cont = 1;
-		int option;
-		
-		for(Project project : projects){
-			System.out.printf("[%d] %s%n", cont++,project.getName()); 
+	public ArrayList<Project> getProjects() {
+		return projects;
+	}
+
+	public void addProjects(Project project) {
+		this.projects.add(project);
+	}
+	
+	public void lookProjects(User user) {
+		int option = 1;
+		for(Project project : this.projects)
+			if(project.getStatus() == Status.EM_DIVULGACAO){
+				System.out.printf("[%d] - %s%nDecricao: %s%n----%n", option++,
+						project.getName(),project.getDescription());
+			}
+		System.out.println("[0] Voltar ao menu principal%n"
+				+ "Para ver mais detalhes selecione o projeto, ou volte ao menu principal");
+		boolean check = false;
+		while(!check) {
+			try {
+				option = Integer.parseInt(input.nextLine());
+				check = true;
+			}catch(NumberFormatException e) {
+				System.out.println("Entrada invalida, tente novamente");
+			}
 		}
-		System.out.println("Selecione o projeto caso queira ver mais detalhes ou volte ao menu anterior");
-		System.out.printf("[%d] Voltar ao menu anterior", cont);
+		if(option == 0)
+			return;
+		this.projects.get(option - 1).lookDetailsProject(user);
 		
-		option = Integer.parseInt(input.next());
-		if(option == projects.size())
-			return;
-		else if(option > projects.size() || option < 0){
-			System.out.println("Opcao invalida, voltando ao menu anterior...");
-			return;
-		}else{
-			projects.get(option - 2).lookProject(projects.get(option - 2));
-		}
 	}
 	
 
