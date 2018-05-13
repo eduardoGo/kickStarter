@@ -12,11 +12,11 @@ import Categories.Music;
 import Categories.Technology;
 import Project.Project;
 import User.Manager;
-import User.User;
+import User.Profile;
 
 public class Database {
 
-	private ArrayList<User> users = new ArrayList<User>();
+	private ArrayList<Profile> users = new ArrayList<Profile>();
 	private ArrayList<Category> categories = new ArrayList<Category>();
 	private ArrayList<Project> projectsToReview = new ArrayList<Project>();
 	
@@ -46,11 +46,11 @@ public class Database {
 	public ArrayList<Category> getCategories() {
 		return categories;
 	}
-	public ArrayList<User> getUsers() {
+	public ArrayList<Profile> getUsers() {
 		return users;
 	}
 
-	public void addUser(User user) {
+	public void addUser(Profile user) {
 		this.users.add(user);
 	}
 

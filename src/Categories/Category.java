@@ -6,8 +6,7 @@ import java.util.Scanner;
 import enums.Status;
 
 import Project.Project;
-import User.User;
-
+import User.Profile;
 public class Category {
 	
 	private ArrayList<Project> projects = new ArrayList<Project>();
@@ -22,24 +21,18 @@ public class Category {
 		this.projects.add(project);
 	}
 	
-	public void lookProjects(User user) {
+	public void lookProjects(Profile user) throws NumberFormatException, IndexOutOfBoundsException{
 		int option = 1;
 		for(Project project : this.projects)
 			if(project.getStatus() == Status.EM_DIVULGACAO){
-				System.out.printf("[%d] - %s%nDecricao: %s%n----%n", option++,
-						project.getName(),project.getDescription());
+				System.out.printf("[%d] - %s%nDecricao: %s%nData de expiracao: %s%n----%n", option++,
+						project.getName(),project.getDescription(),project.getExpirationDate().getTime());
 			}
-		System.out.println("[0] Voltar ao menu principal%n"
+		System.out.printf("[0] Voltar ao menu principal%n"
 				+ "Para ver mais detalhes selecione o projeto, ou volte ao menu principal");
-		boolean check = false;
-		while(!check) {
-			try {
-				option = Integer.parseInt(input.nextLine());
-				check = true;
-			}catch(NumberFormatException e) {
-				System.out.println("Entrada invalida, tente novamente");
-			}
-		}
+	
+		option = Integer.parseInt(input.nextLine());
+			
 		if(option == 0)
 			return;
 		this.projects.get(option - 1).lookDetailsProject(user);

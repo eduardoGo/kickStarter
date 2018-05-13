@@ -3,11 +3,11 @@ package User;
 public class Menssage {
 
 	private String menssage;
-	private User sender;
+	private Profile sender;
 	
 	
 	
-	public Menssage(String menssage, User sender) {
+	public Menssage(String menssage, Profile sender) {
 	
 		this.menssage = menssage;
 		this.sender = sender;
@@ -18,10 +18,10 @@ public class Menssage {
 	public void setMenssage(String menssage) {
 		this.menssage = menssage;
 	}
-	public User getSender() {
+	public Profile getSender() {
 		return sender;
 	}
-	public void setSender(User sender) {
+	public void setSender(Profile sender) {
 		this.sender = sender;
 	}
 	

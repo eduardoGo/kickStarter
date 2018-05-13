@@ -1,11 +1,17 @@
 package User;
 
 
-public class Manager extends User{
+public class Manager extends Profile{
 
 	
 	public Manager(String name, String login, String password, int age, String email) {
-		super(name, login, password, age, email);
+		
+		this.name = name;
+		this.login = login;
+		this.password = password;
+		this.age = age;
+		this.email = email;
+	
 		
 	}
 

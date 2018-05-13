@@ -9,7 +9,7 @@ public class Ticket {
 	
 	Scanner input = new Scanner(System.in);
 	
-	public Ticket() {
+	public Ticket() throws NumberFormatException{
 		
 		System.out.println("Valor: ");
 		this.value = Integer.parseInt(input.nextLine());
